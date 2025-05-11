@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组织振兴</title>
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/industry.css">
+</head>
+<body>
+    <div id="app">
+        <div class="top-img">
+            <h1>潮汕红色旅游网</h1>
+            <p>为潮汕地区的红色文化爱好者提供信息和资源的网站</p>
+        </div>
+
+        <div class="docker">
+            <div class="nav">
+                <ul class="tag">
+                    <li v-for="(tag,index) in tags" :key="index"><a :href="tag.url" :class="tag.current">{{tag.name}}</a></li>
+                </ul>
+            </div>
+
+            <div class="info">
+                <el-card>
+                    <h2>组织振兴</h2>
+                    <el-card class="card" shadow="hover" v-for="(item, index) in items" :key="index">
+                        <div class="item">
+                            <div class="title">{{ item.title }}</div>
+                            <div class="date">{{ item.date }}</div>
+                        </div>
+                    </el-card>
+                </el-card>
+            </div>
+        </div>
+
+        <!-- 版权声明 -->
+        <footer class="copyright">
+            <p>&copy; 2025 潮汕红色旅游网 版权所有</p>
+        </footer>
+
+        <!-- 返回顶部按钮 -->
+        <el-backtop :right="40" :bottom="100" />
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+        const app = createApp({
+            setup() {
+                const tags = ref([
+                {
+                            name: '首页',
+                            url: './index.html'
+                        },
+                        {
+                            name: '旅游线路',
+                            url: './travel-root.html',
+                        },
+                        {
+                            name: '旅游指南',
+                            url: './travel-guide.html',
+                        },
+                        {
+                            name: '文化背景',
+                            url: './cultural.html'
+                        },
+                        {
+                            name: '产业振兴',
+                            url: './industry.html'
+                        },
+                        {
+                            name: '组织振兴',
+                            url: './organization.html',
+                            current: 'current'
+                        },
+                        {
+                            name: '人才振兴',
+                            url: './talent.html'
+                        }
+                ]);
+                const items = ref([
+                { title: '科技赋能银耳长在大楼里', date: '2024-03-28' },
+                { title: '药材毛豆“结缘” “一地双收”增效', date: '2024-03-27' },
+                { title: '“技术改造”焕新添动能 加快发展新质生产力', date: '2024-03-26' },
+                { title: '梨树下的“菇”事新篇', date: '2024-03-25' },
+                { title: '“五老”夏世祥 助力4万青年梦圆“草莓小康”', date: '2024-03-18' },
+                { title: '种猕猴桃的“95后”新农人', date: '2024-03-17' },
+                { title: '“95后”海归硕士变身田园“创客”', date: '2024-03-15' },
+                { title: '专家团队下基层 传经送宝助振兴', date: '2024-03-11' } 
+                ])
+                return { 
+                    tags,
+                    items
+                 }
+            } 
+        })
+        app.use(ElementPlus);
+        app.mount('#app')
+    </script>
+</body>
+</html>

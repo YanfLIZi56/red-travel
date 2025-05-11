@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汕头红色文化旅游线路</title>
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <style>
+        span {
+            color: #000;
+        }
+        .red-theme {
+            --el-color-primary: #c00;
+        }
+        
+        .route-card {
+            margin-bottom: 30px;
+            border-left: 4px solid var(--el-color-primary);
+        }
+        .spot-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .el-tabs--card>.el-tabs__header .el-tabs__nav {
+            border: 1px solid #ccc ;
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+            box-sizing: border-box;
+        }
+        
+        .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+            border-bottom-color: #efe1e1;
+        }
+
+        .el-tabs--card>.el-tabs__header .el-tabs__item {
+            border-bottom: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            transition: color var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier), padding var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier);
+        }
+
+        .spot-item:hover span{
+            color: #c00;
+        }
+
+        .spot-item i {
+            font-size: 16px;
+            font-weight: bold;
+            color: #8f8f8f;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="app" class="red-theme">
+        <div class="top-img">
+            <h1>潮汕红色旅游网</h1>
+            <p>为潮汕地区的红色文化爱好者提供信息和资源的网站</p>
+        </div>
+
+        <div class="docker">
+            <div class="nav">
+                <ul class="tag">
+                    <li v-for="(tag,index) in tags" :key="index"><a :href="tag.url" :class="tag.current">{{tag.name}}</a></li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <el-tabs type="card" v-model="activeRoute">
+                    <el-tab-pane 
+                        v-for="(route, index) in routes" 
+                        :key="index"
+                        :label="'线路' + (index + 1)"
+                        :name="'route' + (index + 1)"
+                    >
+                        <el-card class="route-card" shadow="hover">
+                            <template #header>
+                                <div style="display: flex; align-items: center;justify-content: space-between;">
+                                    <span style="margin-left: 10px; font-weight: bold;">
+                                        线路{{ index + 1 }}：{{ route.title }}
+                                    </span>
+                                    <a href="./travel-guide.html"><span class="more">了解更多>></span></a>
+                                </div>
+                            </template>
+                            
+                            <div v-for="(spot, i) in route.spots" :key="i" class="spot-item">
+                                <i>{{i+1}}.</i>&ensp;
+                                <span style="margin-left: 8px;">{{ spot }}</span>
+                            </div>
+                            
+                            <el-divider />
+                            <p>{{ route.description }}</p>
+                        </el-card>
+                    </el-tab-pane>
+                </el-tabs>
+            </div>
+        </div>
+
+        <!-- 版权声明 -->
+        <footer class="copyright">
+            <p>&copy; 2025 潮汕红色旅游网 版权所有</p>
+        </footer>
+
+        <!-- 返回顶部按钮 -->
+        <el-backtop :right="40" :bottom="100" />
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+        
+        const app = createApp({
+            setup() {
+                const activeRoute = ref('route1');
+                
+                const routes = [
+                    {
+                        title: "革命历史遗迹线",
+                        spots: [
+                            "国民革命军东征军总指挥部、政治部旧址",
+                            "南昌起义南下部队总指挥部旧址",
+                            "汕头开埠文化陈列馆",
+                            "中央红色交通线旧址(汕头站)",
+                            "汕头市革命烈士陵园"
+                        ],
+                        description: "这条线路串联了汕头市区重要革命历史遗迹，展现了从国民革命到解放战争时期的红色历史。"
+                    },
+                    {
+                        title: "党史教育学习线",
+                        spots: [
+                            "龙湖区党史学习馆",
+                            "如龙革命树广场",
+                            "汕头海关关史陈列馆",
+                            "忠烈祠旧址",
+                            "汕头市博物馆",
+                            "蚁光炎纪念亭",
+                            "潮汕人民英烈纪念碑"
+                        ],
+                        description: "通过党史馆、博物馆等场所，系统学习潮汕地区革命历史和英雄事迹。"
+                    },
+                    {
+                        title: "澄海革命老区线",
+                        spots: [
+                            "许士杰故居",
+                            "隆都镇南溪老区革命纪念馆",
+                            "澄海区博物馆(澄海革命老区红色文化展览)"
+                        ],
+                        description: "探访澄海革命老区，了解地方革命斗争史和革命先辈事迹。"
+                    },
+                    {
+                        title: "潮阳红色教育基地线",
+                        spots: [
+                            "海门'万人冢'遗址",
+                            "潮阳区博物馆",
+                            "蔡楚生故居",
+                            "小北山麓红色教育基地"
+                        ],
+                        description: "这条线路包含抗战纪念地和红色教育基地，展现潮阳人民的革命精神。"
+                    },
+                    {
+                        title: "大南山革命遗址线",
+                        spots: [
+                            "红场公园",
+                            "大南山石刻革命标语",
+                            "英雄石洞",
+                            "大南山革命历史纪念馆"
+                        ],
+                        description: "追寻大南山革命根据地足迹，了解闽粤赣边区革命斗争历史。"
+                    },
+                    {
+                        title: "南澳海防红色线",
+                        spots: [
+                            "南澳县渔民公馆执行委员会旧址",
+                            "南澳县海防史博物馆",
+                            "南澳县烈士陵园"
+                        ],
+                        description: "探索南澳岛红色历史，了解海岛军民保卫海防的革命故事。"
+                    }
+                ];
+
+                const tags = ref([
+                        {
+                            name: '首页',
+                            url: './index.html'
+                        },
+                        {
+                            name: '旅游线路',
+                            url: './travel-root.html',
+                            current: 'current'
+                        },
+                        {
+                            name: '旅游指南',
+                            url: './travel-guide.html',
+                        },
+                        {
+                            name: '文化背景',
+                            url: './cultural.html'
+                        },
+                        {
+                            name: '产业振兴',
+                            url: './industry.html'
+                        },
+                        {
+                            name: '组织振兴',
+                            url: './organization.html'
+                        },
+                        {
+                            name: '人才振兴',
+                            url: './talent.html'
+                        }
+
+                    ]);
+
+
+                return {
+                    activeRoute,
+                    routes,
+                    tags
+                };
+            }
+        });
+
+        // 注册Element Plus图标组件
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
+</body>
+</html>

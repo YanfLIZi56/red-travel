@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>潮汕红色旅游网</title>
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/slider.css">
+</head>
+<body>
+    <div id="app">
+        <div class="top-img">
+            <h1>潮汕红色旅游网</h1>
+            <p>为潮汕地区的红色文化爱好者提供信息和资源的网站</p>
+        </div>
+
+        <div class="docker">
+            <div class="nav">
+                <ul class="tag">
+                    <li v-for="(tag,index) in tags" :key="index"><a :href="tag.url">{{tag.name}}</a></li>
+                </ul>
+            </div>
+            <div class="inner clearfix">
+                <div class="clearfix" style="margin-bottom: 20px;">
+                    <!-- 轮播图 -->
+                    <div>
+                        <el-carousel motion-blur height="400px" class="slider-container">
+                            <el-carousel-item>
+                                <div class="slide">
+                                    <img src="./assets/img/八一南昌起义纪念馆.jpg" alt="Slide 1">
+                                    <div class="slide-text">八一南昌起义纪念馆</div>
+                                </div>                           
+                            </el-carousel-item>
+                            <el-carousel-item>
+                                <div class="slide">
+                                    <img src="./assets/img/广东东江各属行政委员公署旧址.jpg" alt="Slide 2">
+                                    <div class="slide-text">广东东江各属行政委员公署旧址</div>
+                                </div>
+                            </el-carousel-item>
+                            <el-carousel-item>
+                                <div class="slide">
+                                    <img src="./assets/img/红场革命烈士纪念碑.jpg" alt="Slide 3">
+                                    <div class="slide-text">红场革命烈士纪念碑</div>
+                                </div>
+                            </el-carousel-item>
+                            <el-carousel-item>
+                                <div class="slide">
+                                    <img src="./assets/img/蔡楚生故居.jpg" alt="Slide 4">
+                                    <div class="slide-text">蔡先生故居</div>
+                                </div>
+                            </el-carousel-item>
+                        </el-carousel>
+                    </div>
+                    <div class="news">
+                        <div class="news-top">
+                            <ul>
+                                <!-- 为每个链接添加 data-page 属性 -->
+                                <li><a href="#" data-page="page1">时政要闻</a></li>
+                                <li><a href="#" data-page="page2">行业资讯</a></li>
+                                <li><a href="#" data-page="page3">媒体报告</a></li>
+                            </ul>
+                            <div 
+                                style="width: auto;float: right;margin-top: 48px;margin-right: 10px;"
+                            >
+                                <a href="#" class="more">更多>></a>
+                            </div>
+                        </div>
+                        <div class="news-inner">
+                            <div id="page1" class="page" style="display: block;">
+                                <a class="title_h3" href="#">百年新起点，总书记指导工会工作高质量发展</a>
+                                <p style="font-size:14px; line-height:28px; text-indent:2em; color:#666;height: 56px;overflow: hidden;">4月28日，人民大会堂见证重要时刻——庆祝中华全国总工会成立100周年暨全国劳动模范和先进工作者表彰大会隆重举行，习近平总书记出席大会并发表重要讲话。讲话中，总书记深刻总结工运事业和工会工作的宝贵经验，对我国工人阶级和广大劳动群众奋进新征程、建功新时代寄予殷切期望，对做好新时代新征程工会工作提出明确...</p>
+                                <div style="border: 1px dotted #cccccc;margin-top: 10px;"></div>
+                                <ol style="margin-top: 10px;">
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">1. 习近平：加快建设文化强国<span>2025-04-25</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">2. 习近平：加快建设文化强国<span>2025-04-25</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">3. 习近平：加快建设文化强国<span>2025-04-25</span></a>                                    
+                                    </li>
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">4. 习近平：加快建设文化强国<span>2025-04-25</span></a>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div id="page2" class="page" style="display: none;">
+                                <a class="title_h3" href="#">冀南“四·二九”反“扫荡”胜利83周年纪念活动在衡水故城隆重举行</a>
+                                <p style="font-size:14px; line-height:28px; text-indent:2em; color:#666;height: 56px;overflow: hidden;">4月28日，人民大会堂见证重要时刻——庆祝中华全国总工会成立100周年暨全国劳动模范和先进工作者表彰大会隆重举行，习近平总书记出席大会并发表重要讲话。讲话中，总书记深刻总结工运事业和工会工作的宝贵经验，对我国工人阶级和广大劳动群众奋进新征程、建功新时代寄予殷切期望，对做好新时代新征程工会工作提出明确...</p>
+                                <div style="border: 1px dotted #cccccc;margin-top: 10px;"></div>
+                                <ol style="margin-top: 10px;">
+                                    <li>
+                                        <a href="#" class="bt_link" title="向每一位平凡而伟大的劳动者致敬！" target="_blank">1. 向每一位平凡而伟大的劳动者致敬！<span>2025-05-06</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="bt_link" title="文化和旅游部五一假期出游提示" target="_blank">2. 文化和旅游部五一假期出游提示<span>2025-04-29</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">3. 习近平：加快建设文化强国<span>2025-04-25</span></a>                                    
+                                    </li>
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">4. 习近平：加快建设文化强国<span>2025-04-25</span></a>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div id="page3" class="page" style="display: none;">
+                                <a class="title_h3" href="#">“进京赶考之路”文物主题游径入选2024年度中国文物主题游径优秀案例</a>
+                                <p style="font-size:14px; line-height:28px; text-indent:2em; color:#666;height: 56px;overflow: hidden;">4月28日，人民大会堂见证重要时刻——庆祝中华全国总工会成立100周年暨全国劳动模范和先进工作者表彰大会隆重举行，习近平总书记出席大会并发表重要讲话。讲话中，总书记深刻总结工运事业和工会工作的宝贵经验，对我国工人阶级和广大劳动群众奋进新征程、建功新时代寄予殷切期望，对做好新时代新征程工会工作提出明确...</p>
+                                <div style="border: 1px dotted #cccccc;margin-top: 10px;"></div>
+                                <ol style="margin-top: 10px;">
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">1. 习近平：加快建设文化强国<span>2025-04-25</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">2. 习近平：加快建设文化强国<span>2025-04-25</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">3. 习近平：加快建设文化强国<span>2025-04-25</span></a>                                    
+                                    </li>
+                                    <li>
+                                        <a href="#" class="bt_link" title="习近平：加快建设文化强国" target="_blank">4. 习近平：加快建设文化强国<span>2025-04-25</span></a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 腰部广告 -->
+            <div class="inner waist clearfix">
+                <div class="ht"><img src="./assets/img/ht.jpg" alt="广告"></div>
+                <div class="ht2"><img src="./assets/img/ht2.jpg" alt="广告"></div>
+            </div>
+
+            <div class="inner clearfix">
+                <el-card style="width: 1040px;float: left;margin-right: 6px;">
+                    <template #header>
+                      <div class="card-header">
+                        <span style="font-weight: bold;font-size: 20px;">活动</span>
+                        <a href="#" class="more" style="float: right;">更多>></a>
+                      </div>
+                    </template>
+                    <div class="card1">
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>“巳巳如意 美美至汕”迎新春大型焰火晚会</h3></template>
+                            <div style="width: 100%;"><img src="./assets/img/active3.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">灯会以独特的彩灯文化、精巧的彩灯工艺、创新多元的交互体验，邀约返乡华侨华人、市民游客共度浪漫灯火之夜。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-01-21
+                            </div>
+                        </el-card>
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>“中华英歌 舞动潮阳”2025潮阳英歌嘉年华活动</h3></template>
+                            <div style="width: 100%;"><img src="./assets/img/active2.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">18名时迁演员共舞，30支各流派英歌队、醒狮队参与巡游展演。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-01-21
+                            </div>
+                        </el-card>
+                    
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>航空航天科技巡展</h3></template>
+                            <div style="width: 100%;"><img src="./assets/img/active1.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">大国重器长廊展、海陆空天文化市集、建国强军梦、逐梦空天展、天空之境、海陆空体验区、能量补给站。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-01-21
+                            </div>
+                        </el-card>
+                    </div>
+                </el-card>
+
+                <!-- /* 右侧广告 */ -->
+                <el-card style="width: 300px;float: left;max-height: 521px;">
+                    <template #header>
+                        <div class="card-header">
+                          <span style="font-weight: bold;font-size: 20px;">汕头要闻</span>
+                          <a href="#" class="more" style="float: right;">更多>></a>
+                        </div>
+                      </template>
+                      <div class="list-page">
+                        <ul>
+                            <li v-for="(item, index) in ListPage" :key="index">
+                                <i>{{ index + 1 }}</i>&ensp;&ensp;
+                                <a href="#"> {{ item }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </el-card>
+            </div>
+
+            <!-- <div class="inner clearfix">
+                <el-card style="width: 1040px;float: left;margin-right: 6px;">
+                    <template #header>
+                      <div class="card-header">
+                        <span style="font-weight: bold;font-size: 20px;">聚焦三农</span>
+                        <div style="float: right;">
+                            为按钮添加 data-category 属性和类名
+                            <el-button type="info" plain class="category-btn" data-category="agri-economy">农业经济</el-button>
+                            <el-button type="info" plain class="category-btn" data-category="agri-finance">农业金融</el-button>
+                            <el-button type="info" plain class="category-btn" data-category="agri-tech">农业科技</el-button>
+                            <el-button type="info" plain class="category-btn" data-category="agri-planting">农业种植</el-button>
+                        </div>
+                      </div>
+                    </template>
+                    <div class="card2" data-category="agri-economy">
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>以县域城乡融合发展推进乡村全面振兴</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/xw1.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">推进县域城乡融合发展，既是乡村全面振兴的内在要求也是走中国特色乡村振兴道路的现实路径。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>推进新型城镇化和乡村全面振兴有机结合</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/xw1.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">习近平总书记在新时代推动西部大开发座谈会上强调，在发展中保障和改善民生。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                    
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>让乡村产业有效有力赋能乡村全面振兴</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/xw1.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">县域城乡融合发展是乡村振兴基本原则的进一步强化。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                    </div>
+                    <div class="card2" data-category="agri-finance">
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>以县域城乡融合发展推进乡村全面振兴</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/xw4.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">推进县域城乡融合发展，既是乡村全面振兴的内在要求也是走中国特色乡村振兴道路的现实路径。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>推进新型城镇化和乡村全面振兴有机结合</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/xw4.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">习近平总书记在新时代推动西部大开发座谈会上强调，在发展中保障和改善民生。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                    
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>让乡村产业有效有力赋能乡村全面振兴</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/xw4.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">县域城乡融合发展是乡村振兴基本原则的进一步强化。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                    </div>
+                    <div class="card2" data-category="agri-tech">
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>以县域城乡融合发展推进乡村全面振兴</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/nyjj.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">推进县域城乡融合发展，既是乡村全面振兴的内在要求也是走中国特色乡村振兴道路的现实路径。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>推进新型城镇化和乡村全面振兴有机结合</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/nyjj.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">习近平总书记在新时代推动西部大开发座谈会上强调，在发展中保障和改善民生。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                    
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>让乡村产业有效有力赋能乡村全面振兴</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/nyjj.jpg" alt="图片"></div>
+                            <p style="margin-top: 10px;">县域城乡融合发展是乡村振兴基本原则的进一步强化。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                    </div>
+                    <div class="card2" data-category="agri-planting">
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>以县域城乡融合发展推进乡村全面振兴</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/hd1.png" alt="图片"></div>
+                            <p style="margin-top: 10px;">推进县域城乡融合发展，既是乡村全面振兴的内在要求也是走中国特色乡村振兴道路的现实路径。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>推进新型城镇化和乡村全面振兴有机结合</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/hd1.png" alt="图片"></div>
+                            <p style="margin-top: 10px;">习近平总书记在新时代推动西部大开发座谈会上强调，在发展中保障和改善民生。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                    
+                        <el-card class="h3-hover" shadow="hover" style="max-width: 320px;height: 417px;position: relative;">
+                            <template #header><h3>让乡村产业有效有力赋能乡村全面振兴</h3></template>
+                            <div style="width: 100%;max-height: 180px;"><img src="./assets/img/hd1.png" alt="图片"></div>
+                            <p style="margin-top: 10px;">县域城乡融合发展是乡村振兴基本原则的进一步强化。</p>
+                            <div style="text-align: right;position: absolute;bottom: 20px;left: 200px;color: #666;">
+                                2025-04-25
+                            </div>
+                        </el-card>
+                    </div>
+                </el-card>
+
+                /* card2 右侧广告 */
+                <el-card style="width: 300px;float: left;max-height: 521px;">
+                    <template #header>
+                        <div class="card-header">
+                          <span style="font-weight: bold;font-size: 20px;">红色资讯</span>
+                          <a href="#" class="more" style="float: right;">更多>></a>
+                        </div>
+                      </template>
+                      <div class="list-page">
+                        <ul>
+                            <li v-for="(item, index) in ListPage2" :key="index">
+                                <i>{{ index + 1 }}</i>&ensp;&ensp;
+                                <a href="#" style="display: inline-block; max-width: 230px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> {{ item }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </el-card>
+            </div> --> 
+        </div>
+
+        <!-- 版权声明 -->
+        <footer class="copyright">
+            <p>&copy; 2025 潮汕红色旅游网 版权所有</p>
+        </footer>
+
+        <!-- 回到顶部按钮 -->
+        <el-backtop :right="40" :bottom="100" />
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsTopLinks = document.querySelectorAll('.news-top ul li a');
+            const pages = document.querySelectorAll('.news-inner .page');
+
+            if (newsTopLinks.length > 0) {
+                newsTopLinks[0].classList.add('active');
+            }
+
+            newsTopLinks.forEach(link => {
+                link.addEventListener('mouseover', (e) => {
+                    e.preventDefault();
+                    // 移除所有 a 标签的 active 类
+                    newsTopLinks.forEach(link => link.classList.remove('active'));
+                    // 给当前点击的 a 标签添加 active 类
+                    link.classList.add('active');
+
+                    pages.forEach(page => {
+                        page.style.display = 'none';
+                    });
+
+                    // 显示对应页面
+                    const pageId = link.dataset.page;
+                    const targetPage = document.getElementById(pageId);
+                    if (targetPage) {
+                        targetPage.style.display = 'block';
+                    }
+                });
+            });
+
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const card2Divs = document.querySelectorAll('.card2');
+
+            // 默认显示第一个 card2
+            if (card2Divs.length > 0) {
+                card2Divs[0].style.display = 'flex';
+            }
+
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('mouseover', () => {
+                    const category = btn.dataset.category;
+                    console.log('当前悬停按钮的 category:', category);
+
+                    // 隐藏所有 card2
+                    card2Divs.forEach(div => {
+                        div.style.display = 'none';
+                    });
+
+                    // 显示对应的 card2
+                    const targetCard2 = document.querySelector(`.card2[data-category="${category}"]`);
+                    console.log('找到的目标 card2:', targetCard2);
+                    if (targetCard2) {
+                        targetCard2.style.display = 'flex';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        const { createApp, ref } = Vue;
+        
+        const app = createApp({
+            setup() {
+                const tags = ref([
+                    {
+                        name: '首页',
+                        url: './index.html'
+                    },
+                    {
+                        name: '旅游线路',
+                        url: './travel-root.html',
+                    },
+                    {
+                        name: '旅游指南',
+                        url: './travel-guide.html'
+                    },
+                    {
+                        name: '文化背景',
+                        url: './cultural.html'
+                    },
+                    {
+                        name: '产业振兴',
+                        url: './industry.html'
+                    },
+                    {
+                        name: '组织振兴',
+                        url: './organization.html'
+                    },
+                    {
+                        name: '人才振兴',
+                        url: './talent.html'
+                    }
+
+                ]);
+
+                const ListPage = ref([
+                    '土地要素市场化改革的五大方向',
+                    '以县域城乡融合发展乡村全面振兴',
+                    '把发展特色优势产业作为主攻方向',
+                    '服务乡村振兴 高校大有可为',
+                    '正确认识“城乡融合”',
+                    '以县域治理为突破口深化城乡融合',
+                    '确保完成新增千亿斤粮食产能目标',
+                    '小良姜如何成为富民增收的大产业？' 
+                ]);
+
+                const ListPage2 = ref([
+"习近平：以史为鉴 共创未来",
+"百年新起点，总书记指导工会工作高质量发展",
+"习近平：加快建设文化强国",
+"政府工作报告，涉及文化和旅游",
+"习近平同越共中央总书记苏林、越南国家主席梁强共同会见中越人民",
+"中央八项规定不是只管五年、十年，而是要长期坚持",
+"中办印发《通知》在全党开展深入贯彻中央八项规定精神学习教育",
+"党中央决定，在全党开展深入贯彻中央八项规定精神学习教育"
+]);
+
+                return {
+                    tags,
+                    ListPage,
+                    ListPage2
+                }
+            }
+        });
+
+        // 使用 Element Plus
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
+    
+</body>
+</html>

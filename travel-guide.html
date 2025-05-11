@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色旅游指南</title>
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/travel-guide.css">
+</head>
+<body>
+    <div id="app">
+        <div class="top-img">
+            <h1>潮汕红色旅游网</h1>
+            <p>为潮汕地区的红色文化爱好者提供信息和资源的网站</p>
+        </div>
+
+        <div class="docker">
+            <div class="nav">
+                <ul class="tag">
+                    <li v-for="(tag,index) in tags" :key="index"><a :href="tag.url" :class="tag.current">{{tag.name}}</a></li>
+                </ul>
+            </div>
+
+            <div class="info clearfix">
+                <el-card class="travel-aside">
+                    <ul>
+                        <li class="aside-current bottom-border">
+                            <a href="./travel-guide.html"><span>红色景区</span></a>
+                        </li>
+                        <li class="bottom-border">
+                            <a href="./food.html"><span>特色美食</span></a>
+                        </li>
+                    </ul>
+                </el-card>
+                <el-card class="travel-content">
+                    <template #header>
+                        <div class="travel-content-head">
+                            <p>旅游指南> <span>红色景区</span></p>
+                            <div style="display: flex;">
+                                <el-input style="width: 340px" placeholder="搜索景点"></el-input>
+                                <el-button type="danger" plain>搜索</el-button>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <div class="travel-content-body">
+                        <a v-for="(spot, index) in scenicSpots" :key="index" class="scenic-spot" href="#">
+                            <img :src="spot.imageUrl" :alt="spot.name">
+                            <div class="scenic-spot-info clearfix">
+                                <h2>{{ spot.name }}</h2>
+                                <p>{{ spot.description }}</p>
+                                <div class="foot">
+                                    <i>地址: {{spot.address}}</i>
+                                    <el-rate
+                                        v-model="spot.rating"
+                                        disabled
+                                        show-score
+                                        text-color="#ff9900"
+                                        score-template="推荐指数 {value}"
+                                    />
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <p class="travel-content-foot">
+                        <a href="#">&lt;</a>
+                        第1页
+                        <a href="#">&gt;</a>
+                    </p>
+                </el-card>
+            </div>
+        </div>
+
+        <!-- 版权声明 -->
+        <footer class="copyright">
+            <p>&copy; 2025 潮汕红色旅游网 版权所有</p>
+        </footer>
+
+        <!-- 返回顶部按钮 -->
+        <el-backtop :right="40" :bottom="100" />
+    </div>
+
+
+    <script>
+        const { createApp, ref } = Vue;
+        
+        const app = createApp({
+            setup() {
+                const scenicSpots = ref([
+                {
+                    name: '红场革命烈士纪念碑',
+                    imageUrl: './assets/img/红场革命烈士纪念碑.jpg',
+                    description: '红场革命烈士纪念碑建于1963年12月21日，意在纪念第一次国内革命战争时期和土地革命战争时期在潮、普、惠大南山地区牺牲的革命烈士，是汕头市、潮阳市爱国主义教育基地，我国红色旅游经典景区...',
+                    address: '广东省汕头市红场镇',
+                    rating: 4.5
+                },
+                {
+                    name: '八一南昌起义纪念馆',
+                    imageUrl: './assets/img/八一南昌起义纪念馆.jpg',
+                    description: '八一南昌起义南下部队总指挥部旧址原是大埔会馆，始建于1926年。旧址总面积1271平方米，各层四面都有走廊相通，曾为汕头市教师进修学校，原貌基本完好。1988年，南昌起义南下部队总指挥部旧址被汕头市人民政府定为市级文...',
+                    address: '广东省汕头市金平区民权路50号',
+                    rating: 4.0
+                },
+                {
+                    name: '广东东江各属行政委员公署旧址',
+                    imageUrl: './assets/img/广东东江各属行政委员公署旧址.jpg',
+                    description: '广东东江各属行政委员公署旧址始建于清光绪十四年(1888年)，是一座四合院式布局的砖木建筑，由山门、前殿、正殿、厢房、院落等组成，面积2500平方米，于1979年公布为广东省文物保护单 2010年实行扩建，以陈列馆为中心，周边有抗大纪念碑、抗大学员浮雕、抗大首长旧居、抗大学员碑林、抗大学员课堂...',
+                    address: '广东省汕头市金平区小公园街道',
+                    rating: 4.7
+                },
+                {
+                    name: '蔡楚生故居',
+                    imageUrl: './assets/img/蔡楚生故居.jpg',
+                    description: '铜盂镇是一个人杰地灵，名人辈出的地方，一代电影艺术大师蔡楚生便出生于此，并在此渡过童年与青少年时代。蔡家祖屋是潮汕农村传统的民居，保存相对非常完整，上面还筑有高达数十米的炮楼，是...',
+                    address: '广东省汕头市潮阳区铜盂镇集星村',
+                    rating: 4.5
+                }
+            ]);
+                const tags = ref([
+                        {
+                            name: '首页',
+                            url: './index.html'
+                        },
+                        {
+                            name: '旅游线路',
+                            url: './travel-root.html',
+                        },
+                        {
+                            name: '旅游指南',
+                            url: './travel-guide.html',
+                            current: 'current'
+                        },
+                        {
+                            name: '文化背景',
+                            url: './cultural.html'
+                        },
+                        {
+                            name: '产业振兴',
+                            url: './industry.html'
+                        },
+                        {
+                            name: '组织振兴',
+                            url: './organization.html'
+                        },
+                        {
+                            name: '人才振兴',
+                            url: './talent.html'
+                        }
+
+                    ]);
+
+                return {
+                    scenicSpots,
+                    tags
+                }
+            }
+        });
+
+        // 使用 Element Plus
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
+</body>
+</html>

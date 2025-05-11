@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>潮汕文化背景</title>
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/cultural.css">
+
+    
+</head>
+<body>
+    <div id="app">
+
+        <div class="content"><h1>潮汕文化背景</h1></div>
+        <div class="parallax p1">
+            <div class="docker">
+                <div class="nav">
+                    <ul class="tag">
+                        <li v-for="(tag,index) in tags" :key="index"><a :href="tag.url" :class="tag.current">{{tag.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content"><h1>汕头-潮汕</h1></div>
+        <div class="parallax p6">
+            <p>
+                潮汕地区，位于广东省东南沿海，东北与福建省接壤，属闽南文化圈、潮汕文化区和潮语方言区，广东三大闽语区之一 [301]，是潮汕民系的祖籍地与集中地，潮汕文化的发源地、兴盛地，是通行潮语、流行潮汕文化的地区。 [1]潮汕地区指的是潮州市、汕头市和揭阳市三市， [241-242]总面积约1万多平方公里，常住人口有1000多万。 [245]广义的潮汕地区包括汕头（经济特区）、潮州、揭阳、汕尾（三甲部分地区） [187] [321-323]四市。 [2] [240]
+潮汕地区先属福建后归广东，秦朝至三国时期始称揭阳 [20-21]，古代称为潮州，新中国成立后称为潮汕，当代原称为汕头，现称为潮汕。 [19] [21-22]1991年底，经国务院批准，潮汕地区的政区建制作了一次大调整，分设汕头、潮州、揭阳3个地级市。 [243]
+潮汕北部横亘的凤凰山脉使潮州与汕头、揭阳组成的城市群共同构成一片独特的潮汕地区。潮汕地区与台湾省对望，汕潮揭三市地缘接近、文脉相通、文化同根 [250]，潮汕是著名的侨乡、港澳台同胞的重要祖籍地之一 [3]，1500多万海外潮汕人的家乡 [290]， [2]潮汕侨批入选世界记忆名录 [4]。
+潮汕是1904年客家华侨兴建潮汕铁路后出现，是隋唐之际畲族居住地。潮汕是著名的旅游胜地，隋朝经略台湾的始发地 [12]，唐宋十相留声之地。唐代以来是海上丝绸之路的重要门户和对台的主要通道， [2] [13]大量的瓷器、茶叶、丝绸、红糖、工艺品运往世界各地 [14]，是明朝郑成功收复台湾的重要基地 [15-16]，南澳一号的发掘地 [17]。
+潮汕地区三市同宗同族享有“岭海名邦、百载商埠”的美誉，有国家历史文化名城，中国首批经济特区，是粤东地区政治、经济、文化、航运中心。
+            </p>
+        </div>
+        <div class="content"><h1>广济桥</h1></div>
+        <div class="parallax p2">
+            <p>潮州广济桥，古称康济桥、丁侯桥、济川桥，俗称湘子桥，又称潮州湘子桥，中国四大古桥之一，中国四大名桥之一，被桥梁专家茅以升誉为“世界上最早的启闭式桥梁”
+            </p>
+        </div>
+        <div class="content"><h1>小公园</h1></div>
+        <div class="parallax p3">
+            <p>汕头小公园开埠区的结构分为一轴、两核、三区。一轴即潮人精神家园轴，是以小公园中山纪念亭为核心、以安平路为轴线，通过标志性建筑的改造、公共空间的塑造、交通的梳理、文化的凸显等手法打造。两核包括百载商埠文化核心，以中山纪念亭、南生百货大楼等形成；骑楼风情文化核心则是展示传统骑楼建筑的文化核心。三区包括小公园片区、安平西片区和现代居住片区。 [14]清咸丰十年（1860年），汕头作为通商口岸正式开埠。是近代开埠的34个城市中唯一保留下来的较为完好的开埠区和中国保留较为完整的骑楼建筑群，汕头小公园开埠区不仅记录着城市的历史文脉，也承载着不少海内外潮人的乡土记忆，是“潮人精神文化家园”。</p>
+        </div>
+        <div class="content"><h1>潮汕特色美食</h1></div>
+        <div class="parallax p4">
+            <p>潮汕特色美食，反应了当地的环境、人文</p>
+        </div>
+        <div class="content"><h1>潮汕英歌舞</h1></div>
+        <div class="parallax p5">
+            <p>俗称“唱英歌”“扣英歌”，又称“因歌”“秧歌”“莺歌”，是流行于广东汕头、潮州、揭阳、汕尾及福建漳州等地区的一种糅合南派武术、戏等剧地方艺术的民间广场舞蹈。英歌舞有北有秧歌、南有英歌之称。</p>
+        </div>
+        <div class="content"></div>
+        <!-- 版权声明 -->
+        <footer class="copyright">
+            <p>&copy; 2025 潮汕红色旅游网 版权所有</p>
+        </footer>
+        <!-- 回到顶部 -->
+        <el-backtop :right="40" :bottom="100" />
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+        const app = createApp({
+            setup() {
+                const tags = ref([
+                        {
+                            name: '首页',
+                            url: './index.html'
+                        },
+                        {
+                            name: '旅游线路',
+                            url: './travel-root.html',
+                        },
+                        {
+                            name: '旅游指南',
+                            url: './travel-guide.html',
+                            
+                        },
+                        {
+                            name: '文化背景',
+                            url: './cultural.html',
+                            current: 'current'
+                        },
+                        {
+                            name: '产业振兴',
+                            url: './industry.html'
+                        },
+                        {
+                            name: '组织振兴',
+                            url: './organization.html'
+                        },
+                        {
+                            name: '人才振兴',
+                            url: './talent.html'
+                        }
+                    ]);
+                return {tags}
+            }   
+        })
+        
+        app.mount('#app')
+    </script>
+</body>
+</html>

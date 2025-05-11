@@ -1,0 +1,148 @@
+.news {
+    width: 710px;
+    height: 400px;
+    float: left;
+}
+
+.news-top {
+    width: 100%;
+    height: 19%;
+    border: #dddddd solid 2px;
+}
+
+.news-top > ul {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    float: left;
+    margin-left: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 48px;
+}
+.news-top > ul > li {
+    cursor: pointer;
+    height: 30px;
+}
+
+.news-top a {
+    position: relative; /* 为伪元素定位 */
+}
+
+.news-top a.active {
+    color: #c00;
+    border-bottom: 3px solid #c00; /* 激活状态下边框变红 */
+}
+
+.news-top a.active::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px; /* 调整三角形位置 */
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #c00; /* 创建红色向下三角形 */
+}
+
+.news-inner {
+    width: 100%;
+    height: 80%;
+    border: #dddddd solid 2px;
+    border-top: 0;
+}
+
+.page {
+   padding: 10px 20px; 
+}
+
+.title_h3 {
+    font-size: 23px;
+    font-weight: bold;
+    font-family: '微软雅黑';
+    display: block;
+    line-height: 70px;
+    color: #a40e0d;
+    text-align: center;
+    overflow: hidden;
+    /* 禁止换行 */
+    white-space: nowrap;
+    /* 当文本溢出包含元素时，显示省略号 */
+    text-overflow: ellipsis;
+}
+
+.bt_link {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    padding-left: 10px;
+    line-height: 35px;
+    height: 35px;
+    overflow: hidden;
+}
+.bt_link:hover {
+    color: #c00;
+}
+.bt_link > span {
+    float: right;
+    margin-right: 10px; 
+}
+
+.ht {
+    float: left;
+    width: 1040px;
+    height: 150px;
+    margin-right: 10px;
+}
+
+.ht2{
+    float: left;
+    width: 300px;
+    height: 150px;
+}
+
+.card1 {
+  display: flex; 
+  justify-content: space-between;
+  flex-wrap: nowrap; 
+}
+
+.card2 {
+  display: none;
+  justify-content: space-between;
+  flex-wrap: nowrap; 
+}
+
+.card2 div {
+ overflow: hidden; 
+}
+
+.list-page {
+  font-family: Arial, sans-serif;
+}
+
+.list-page li {
+    padding: 10px 0;
+  font-size: 14px;
+  margin-bottom: 10px;
+  border-bottom: #787878 solid 1px;
+  position: relative;
+}
+
+.list-page li a:hover {
+    color: #c00;
+}
+
+.list-page i {
+    font-size: 16px;
+ font-weight: bold;
+  color: #8f8f8f;
+}
+
+.h3-hover h3 {
+    transition: color 0.5s ease; 
+}
+
+.h3-hover:hover h3 {
+    color: #c00;
+}

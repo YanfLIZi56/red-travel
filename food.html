@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>潮汕特色美食</title>
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/travel-guide.css">
+</head>
+<body>
+    <div id="app">
+        <div class="top-img">
+            <h1>潮汕红色旅游网</h1>
+            <p>为潮汕地区的红色文化爱好者提供信息和资源的网站</p>
+        </div>
+
+        <div class="docker">
+            <div class="nav">
+                <ul class="tag">
+                    <li v-for="(tag,index) in tags" :key="index"><a :href="tag.url" :class="tag.current">{{tag.name}}</a></li>
+                </ul>
+            </div>
+
+            <div class="info clearfix">
+                <el-card class="travel-aside">
+                    <ul>
+                        <li class="bottom-border">
+                            <a href="./travel-guide.html"><span>红色景区</span></a>
+                        </li>
+                        <li class="aside-current bottom-border">
+                            <a href="./food.html"><span>特色美食</span></a>
+                        </li>
+                    </ul>
+                </el-card>
+                <el-card class="travel-content">
+                    <template #header>
+                        <div class="travel-content-head">
+                            <p>旅游指南> <span>特色美食</span></p>
+                            <div style="display: flex;">
+                                <el-input style="width: 340px" placeholder="搜索潮汕特色美食"></el-input>
+                                <el-button type="danger" plain>搜索</el-button>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <div class="travel-content-body">
+                        <a v-for="(spot, index) in foods" :key="index" class="scenic-spot" href="#">
+                            <img :src="spot.imageUrl" :alt="spot.name">
+                            <div class="scenic-spot-info clearfix">
+                                <h2>{{ spot.name }}</h2>
+                                <p>{{ spot.description }}</p>
+                                <div class="foot">
+                                    <el-rate
+                                        v-model="spot.rating"
+                                        disabled
+                                        show-score
+                                        text-color="#ff9900"
+                                        score-template="推荐指数 {value}"
+                                    />
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <p class="travel-content-foot">
+                        <a href="#">&lt;</a>
+                        第1页
+                        <a href="#">&gt;</a>
+                    </p>
+                </el-card>
+            </div>
+        </div>
+
+        <!-- 版权声明 -->
+        <footer class="copyright">
+            <p>&copy; 2025 潮汕红色旅游网 版权所有</p>
+        </footer>
+
+        <!-- 回到顶部 -->
+        <el-backtop :right="40" :bottom="100" />
+    </div>
+
+
+    <script>
+        const { createApp, ref } = Vue;
+        
+        const app = createApp({
+            setup() {
+                const foods = ref([
+                    {
+                        imageUrl: './assets/img/鱼饺.jpg',
+                        name: '鱼饺：海鲜与面点的完美融合',
+                        description: '潮汕鱼饺与其他地区的饺子有着本质区别——它创新性地以海鲜为原料制作饺皮，展现了潮汕人"靠海吃海"的饮食智慧。传统鱼饺选用肉质细腻的海鳗，经过精细加工：剔净鱼刺和筋条，压拍成鱼茸，加入调味料后碾薄成三...',
+                        rating: 4.6
+                    },
+                    {
+                        imageUrl: './assets/img/鲎粿.jpg',
+                        name: '鲎粿：穿越千年的海洋风味',
+                        description: '鲎粿这一奇特小吃，其历史可追溯至唐朝，清康熙年间已作为待客佳品。鲎粿得名于其原始制作方法——取鲎（一种古老的海生节肢动物）肉与米浆混合炊制。随着鲎成为保护动物，现代鲎粿虽不再使用鲎肉，但...',
+                        rating: 4.2
+                    },
+                    {
+                        imageUrl: './assets/img/猪脚圈.jpg',
+                        name: '猪脚圈：街头巷尾的酥脆诱惑',
+                        description: '猪脚圈是潮汕地区最受欢迎的油炸小吃之一，虽名为"猪脚"，实则与猪脚无关，因其圆圈形状酷似猪蹄横切面而得名。这款小吃在不同地区有不同称呼：澄海称"揭桃包"，外砂镇叫"芋粿"，汕尾则称"吾攀...',
+                        rating: 4.5
+                    },
+                    {
+                        imageUrl: './assets/img/煎墨斗鱼卵.jpg',
+                        name: '煎墨斗鱼卵：海洋的精华滋味',
+                        description: '潮汕人称墨鱼为"墨斗鱼"，而煎墨斗鱼卵则是将这一海产的精华部分转化为美味小吃的典范。选取新鲜的墨鱼卵，打成浆后冷藏定型，切片香煎，搭配潮汕特有的金桔油食用，酸甜解腻，凸显墨鱼卵的鲜美...',
+                        rating: 4.8
+                    }
+                ]);
+
+                const tags = ref([
+                        {
+                            name: '首页',
+                            url: './index.html'
+                        },
+                        {
+                            name: '旅游线路',
+                            url: './travel-root.html',
+                        },
+                        {
+                            name: '旅游指南',
+                            url: './travel-guide.html',
+                            current: 'current'
+                        },
+                        {
+                            name: '文化背景',
+                            url: './cultural.html'
+                        },
+                        {
+                            name: '产业振兴',
+                            url: './industry.html'
+                        },
+                        {
+                            name: '组织振兴',
+                            url: './organization.html'
+                        },
+                        {
+                            name: '人才振兴',
+                            url: './talent.html'
+                        }
+
+                    ]);
+
+                return {
+                    foods,
+                    tags
+                }
+            }
+        });
+
+        // 使用 Element Plus
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
+</body>
+</html>

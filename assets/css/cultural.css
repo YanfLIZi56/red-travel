@@ -1,0 +1,51 @@
+.parallax {
+    width: 100%;
+    height: 82vh; /* 视口高度 */
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+}
+
+.p1 {background-image: url('../img/1.jpg'); }
+.p2 {background-image: url('../img/2.jpg'); }
+.p3 {background-image: url('../img/3.jpg'); }
+.p4 {background-image: url('../img/4.jpg'); }
+.p5 {background-image: url('../img/5.jpg'); }
+.p6 {background-image: url('../img/6.jpg'); }
+
+.content {
+    background: #c00;
+    height: 8vh;
+    width: 100%;
+    color: #fff;
+}
+.content h1 {
+    font-size: 2em;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.parallax p {
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
+    backdrop-filter: blur(10px);
+    color: #333; /* 深灰色文字 */
+    padding: 20px; /* 内边距 */
+    border-radius: 8px; /* 圆角边框 */
+    line-height: 1.8; /* 行高 */
+    font-size: 16px; /* 字体大小 */
+    max-width: 800px; /* 最大宽度 */
+    margin: 20px auto; /* 上下外边距 20px，左右居中 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+
+.parallax p:hover {
+    transform: translateY(-5px); /* 鼠标悬停时向上移动 5px */
+}
+
+body {
+    background: #c00;
+}
