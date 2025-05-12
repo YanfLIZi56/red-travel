@@ -146,3 +146,44 @@
 .h3-hover:hover h3 {
     color: #c00;
 }
+
+.right-list a {
+ display: inline-block;
+  max-width: 230px;
+   white-space: nowrap;
+    overflow: hidden;
+     text-overflow: ellipsis;
+}
+
+.video {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    grid-auto-rows: minmax(180px, auto);
+}
+.video-item:first-child {
+    grid-row: span 2;
+    grid-column: span 2; 
+    aspect-ratio: auto; /* 保持宽高比 */
+}
+.video-item:not(:first-child) {
+    max-width: 340px;
+}
+.video-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    aspect-ratio: 16/9;
+    background-color: #f5f5f5;
+}
+
+.video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.video-item:active {
+    transform: translateY(1px);
+}

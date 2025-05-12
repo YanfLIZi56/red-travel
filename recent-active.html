@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>近期活动</title>
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/red-active.css">
+</head>
+<body>
+    <div id="app">
+        <div class="top-img">
+            <h1>潮汕红色旅游网</h1>
+            <p>为潮汕地区的红色文化爱好者提供信息和资源的网站</p>
+        </div>
+
+        <div class="docker">
+            <div class="nav">
+                <ul class="tag">
+                    <li v-for="(tag,index) in tags" :key="index"><a :href="tag.url" :class="tag.current">{{tag.name}}</a></li>
+                </ul>
+            </div>
+
+            <div class="clearfix info">
+                <el-card class="content">
+                        <template #header>
+                            <div class="content-head">
+                                <p><span>近期活动</span></p>
+                                <div style="display: flex;">
+                                    <el-input style="width: 340px" placeholder="搜索活动"></el-input>
+                                    <el-button type="danger" plain>搜索</el-button>
+                                </div>
+                            </div>
+                        </template>
+                        
+                        <div class="content-body">
+                            <a v-for="(spot, index) in scenicSpots" :key="index" class="scenic-spot" href="#">
+                                <img :src="spot.imageUrl" :alt="spot.name">
+                                <div class="scenic-spot-info clearfix">
+                                    <h2>{{ spot.name }}</h2>
+                                    <p>{{ spot.description }}</p>
+                                    
+                                </div>
+                            </a>
+                        </div>
+    
+                        <p class="content-foot">
+                            <a href="#">&lt;</a>
+                            第{{currentPage}}页
+                            <a href="#">&gt;</a>
+                        </p>
+                    </el-card>
+            </div>
+        </div>
+
+        <!-- 版权声明 -->
+        <footer class="copyright">
+            <p>&copy; 2025 潮汕红色旅游网 版权所有</p>
+        </footer>
+
+        <!-- 回到顶部按钮 -->
+        <el-backtop :right="40" :bottom="100" />
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+        const app = createApp({
+            setup() {
+                const currentPage = ref(1);
+
+                const tags = ref([
+                      {
+                            name: '首页',
+                            url: './index.html'
+                        },
+                        {
+                            name: '旅游线路',
+                            url: './travel-root.html',
+                        },
+                        {
+                            name: '旅游指南',
+                            url: './travel-guide.html'
+                        },
+                        {
+                            name: '文化背景',
+                            url: './cultural.html'
+                        },
+                        {
+                            name: '近期活动',
+                            url: './recent-active.html' ,
+                            current: 'current'
+                        },
+                        
+                        {
+                            name: '红色影像',
+                            url: './red-video.html'
+                        },
+                        {
+                            name: '红色体验',
+                            url: './red-experience.html'
+                        }  
+                ]) ;
+
+                const scenicSpots = ref([
+                        {
+                            name: '“巳巳如意 美美至汕”迎新春大型焰火晚会',
+                            imageUrl: './assets/img/active3.jpg',
+                            description: '灯会以独特的彩灯文化、精巧的彩灯工艺、创新多元的交互体验，邀约返乡华侨华人、市民游客共度浪漫灯火之夜。',
+                        },{
+                            name: '“中华英歌 舞动潮阳”2025潮阳英歌嘉年华活动',
+                            imageUrl: './assets/img/active2.jpg',
+                            description: '18名时迁演员共舞，30支各流派英歌队、醒狮队参与巡游展演。',
+                        },{
+                            name: '航空航天科技巡展',
+                            imageUrl: './assets/img/active1.jpg',
+                            description: '大国重器长廊展、海陆空天文化市集、建国强军梦、逐梦空天展、天空之境、海陆空体验区、能量补给站。',
+                        }
+                        
+                ]);
+                return { 
+                    tags,
+                    scenicSpots,
+                    currentPage,
+                 };
+            }   
+        });
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
+</body>
+</html>

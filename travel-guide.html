@@ -71,7 +71,7 @@
 
                     <p class="travel-content-foot">
                         <a href="#">&lt;</a>
-                        第1页
+                        第{{currentPage}}页
                         <a href="#">&gt;</a>
                     </p>
                 </el-card>
@@ -93,6 +93,7 @@
         
         const app = createApp({
             setup() {
+                const currentPage = ref(1);
                 const scenicSpots = ref([
                 {
                     name: '红场革命烈士纪念碑',
@@ -121,6 +122,20 @@
                     description: '铜盂镇是一个人杰地灵，名人辈出的地方，一代电影艺术大师蔡楚生便出生于此，并在此渡过童年与青少年时代。蔡家祖屋是潮汕农村传统的民居，保存相对非常完整，上面还筑有高达数十米的炮楼，是...',
                     address: '广东省汕头市潮阳区铜盂镇集星村',
                     rating: 4.5
+                },
+                {
+                    name: '澄海区博物馆',
+                    imageUrl: './assets/img/澄海区博物馆.jpg', 
+                    description: '澄海区博物馆位于澄海区中心，是澄海区的重要文化旅游景点。该博物馆以红色文化为主题，展示了澄海区的历史文化和红色文化。该博物馆的建筑风格独特，采用了红色和白色的材料，形成了独特的风格。该博物馆的...',
+                    address: '广东省汕头市澄海区澄海区博物馆',
+                    rating: 4.4
+                },
+                {
+                    name: '大北山革命历史纪念馆',
+                    imageUrl: './assets/img/大北山革命历史纪念馆.jpg', 
+                    description: '大北山革命历史纪念馆位于汕头市潮阳区大北山镇，是一个历史博物馆，是汕头市红色旅游经典景区之一。该纪念馆以红色文化为主题，展示了大北山镇的历史文化和红色文化。该纪念馆的建筑风格独特，采用了红色和白色的材料，形成了独特的风格。该纪念馆的...',
+                    address: '广东省揭西大北山森林公园',
+                    rating: 4.0
                 }
             ]);
                 const tags = ref([
@@ -142,23 +157,25 @@
                             url: './cultural.html'
                         },
                         {
-                            name: '产业振兴',
-                            url: './industry.html'
+                            name: '近期活动',
+                            url: './recent-active.html' 
+                        },
+                        
+                        {
+                            name: '红色影像',
+                            url: './red-video.html'
                         },
                         {
-                            name: '组织振兴',
-                            url: './organization.html'
-                        },
-                        {
-                            name: '人才振兴',
-                            url: './talent.html'
-                        }
+                            name: '红色体验',
+                            url: './red-experience.html'
+                        }  
 
                     ]);
 
                 return {
                     scenicSpots,
-                    tags
+                    tags,
+                    currentPage
                 }
             }
         });

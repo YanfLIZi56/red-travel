@@ -1,0 +1,91 @@
+.info {
+    margin-top: 10px;
+}
+
+.content{
+    width: 100%;
+}
+
+.content-head{
+    position: relative; 
+    padding-left: 20px; 
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.content-head::before{
+    content: "";
+    display: block;
+    height: 21px;
+    width: 10px; 
+    background-color: #c00;
+    position: absolute; /* 设置绝对定位 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+}
+
+.scenic-spot {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px dashed #ccc;
+  padding: 10px 30px 20px;
+  transition: all 0.3s ease;
+}
+
+.scenic-spot h2 {
+  transition: all 0.5s ease;
+}
+
+.scenic-spot:hover {
+  background-color: #f9f9f9;
+}
+
+.scenic-spot:hover h2 {
+  color: #c00;
+}
+
+.scenic-spot img {
+  width: 200px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.scenic-spot-info {
+  flex: 1;
+}
+
+.scenic-spot-info h2 {
+  margin-top: 0;
+}
+
+.scenic-spot-info p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.foot{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.content-foot{
+  width: 40%;
+  text-align: center;
+  display: flex;
+  margin: 20px auto 0;
+  justify-content: space-around;
+  color: #c00;
+}
+
+.content-foot a{
+  font-size: 20px;
+  transition: all 0.4s ease;
+}
+
+.content-foot a:hover{
+  color: #c00;
+  transform: scale(1.1);
+}

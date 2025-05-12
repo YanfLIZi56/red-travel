@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色影像</title>
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/red-active.css">
+</head>
+<body>
+    <div id="app">
+        <div class="top-img">
+            <h1>潮汕红色旅游网</h1>
+            <p>为潮汕地区的红色文化爱好者提供信息和资源的网站</p>
+        </div>
+
+        <div class="docker">
+            <div class="nav">
+                <ul class="tag">
+                    <li v-for="(tag,index) in tags" :key="index"><a :href="tag.url" :class="tag.current">{{tag.name}}</a></li>
+                </ul>
+            </div>
+
+            <div class="clearfix info">
+                <el-card class="content">
+                    <template #header>
+                        <div class="content-head">
+                            <p><span>红色影像</span></p>
+                            <div style="display: flex;">
+                                <el-input style="width: 340px" placeholder="搜索红色影像"></el-input>
+                                <el-button type="danger" plain>搜索</el-button>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <div class="content-body">
+                        <a v-for="(spot, index) in videos" :key="index" class="scenic-spot" href="#">
+                            <img :src="spot.url" :alt="spot.name">
+                            <div class="scenic-spot-info clearfix">
+                                <h2>{{ spot.name }}</h2>
+                                <p>{{ spot.description }}</p>
+                                
+                            </div>
+                        </a>
+                    </div>
+
+                    <p class="content-foot">
+                        <a href="#">&lt;</a>
+                        第{{currentPage}}页
+                        <a href="#">&gt;</a>
+                    </p>
+                </el-card>
+            </div>
+        </div>
+
+        <!-- 版权声明 -->
+        <footer class="copyright">
+            <p>&copy; 2025 潮汕红色旅游网 版权所有</p>
+        </footer>
+
+        <!-- 回到顶部按钮 -->
+        <el-backtop :right="40" :bottom="100" />
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+        const app = createApp({
+            setup() {
+                const currentPage = ref(1);
+                const tags = ref([
+                      {
+                            name: '首页',
+                            url: './index.html'
+                        },
+                        {
+                            name: '旅游线路',
+                            url: './travel-root.html',
+                        },
+                        {
+                            name: '旅游指南',
+                            url: './travel-guide.html'
+                        },
+                        {
+                            name: '文化背景',
+                            url: './cultural.html'
+                        },
+                        {
+                            name: '近期活动',
+                            url: './recent-active.html' 
+                        },
+                        {
+                            name: '红色影像',
+                            url: './red-video.html',
+                            current: 'current'
+                        },
+                        {
+                            name: '红色体验',
+                            url: './red-experience.html'
+                        }  
+                ]) ;
+
+                const videos = ref([
+                    { name: "红歌唱响的地方丨听《弹起我心爱的土琵琶》 走进铁道游击队景区", url: "./assets/img/redVideo1.jpg", description: "《弹起我心爱的土琵琶》作于1956年，是故事片《铁道游击队》的插曲。1938年春，日军占领枣庄后，为长期掠夺枣庄的煤炭资源，派重兵驻守枣庄。为扭转被动局面，鲁南人民抗日义勇总队在当地建立秘密情报站并秘密组织了一支有11人参加的抗日武装，自称枣庄铁道队。" },
+                    { name: "红歌唱响的地方丨听《地道战》 游冉庄地道战遗址景区", url: "./assets/img/redVideo2.jpg", description: "《地道战》是1965年上映的电影《地道战》的同名主题曲。这首歌曲澎湃激昂、朗朗上口，生动形象地描绘出“地道战”独特的作战方式，歌颂了中华儿女英勇无畏的抗日精神，成为经典，传唱至今。"},
+                    { name: "红歌唱响的地方丨听《中国人民志愿军战歌》 观鸭绿江国境铁路大桥", url: "./assets/img/redVideo3.jpg", description: "这首气壮山河的《中国人民志愿军战歌》创作于1950年11月25日，由时任中国人民志愿军炮兵第一师26团5连指导员麻扶摇作词，时任中国文化部艺术局副局长周巍峙作曲。" },
+                    { name: "第十二届全国大学生红色旅游创意策划大赛举办", url: "./assets/img/redVideo4.jpg", description: "近日，由文化和旅游部资源开发司、陕西省文化和旅游厅、延安市人民政府、北京第二外国语学院主办，教育部思想政治工作司、“学习强国”学习平台、北京市委教育工作委员会支持的第十二届全国大学生红色旅游创意策划大赛全国总决赛在线上举办，吸引了来自全国943所高校的7085支队伍，共3.8万名师生参赛。" },
+                    { name: "我们这十年丨章旖：把红色种子播撒到更多更远的地方", url: "./assets/img/redVideo5.jpg", description: "小时候，爷爷经常对我讲起他在抗美援朝战场上的那些往事，在我心中播下了红色的种子，我一直就想把这颗种子播撒到远方。" },
+                ]);
+                return { 
+                    tags,
+                    videos,
+                    currentPage
+                 };
+            }   
+        });
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
+</body>
+</html>

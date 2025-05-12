@@ -70,7 +70,7 @@
 
                     <p class="travel-content-foot">
                         <a href="#">&lt;</a>
-                        第1页
+                        第{{currentPage}}页
                         <a href="#">&gt;</a>
                     </p>
                 </el-card>
@@ -92,6 +92,7 @@
         
         const app = createApp({
             setup() {
+                const currentPage = ref(1);
                 const foods = ref([
                     {
                         imageUrl: './assets/img/鱼饺.jpg',
@@ -138,23 +139,25 @@
                             url: './cultural.html'
                         },
                         {
-                            name: '产业振兴',
-                            url: './industry.html'
+                            name: '近期活动',
+                            url: './recent-active.html' 
+                        },
+                        
+                        {
+                            name: '红色影像',
+                            url: './red-video.html'
                         },
                         {
-                            name: '组织振兴',
-                            url: './organization.html'
-                        },
-                        {
-                            name: '人才振兴',
-                            url: './talent.html'
-                        }
+                            name: '红色体验',
+                            url: './red-experience.html'
+                        }  
 
                     ]);
 
                 return {
                     foods,
-                    tags
+                    tags,
+                    currentPage
                 }
             }
         });

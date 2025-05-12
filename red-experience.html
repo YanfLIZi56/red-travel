@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色体验</title>
+    <!-- 引入 Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- 引入 Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 Element Plus JS -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/red-active.css">
+</head>
+<body>
+    <div id="app">
+        <div class="top-img">
+            <h1>潮汕红色旅游网</h1>
+            <p>为潮汕地区的红色文化爱好者提供信息和资源的网站</p>
+        </div>
+
+        <div class="docker">
+            <div class="nav">
+                <ul class="tag">
+                    <li v-for="(tag,index) in tags" :key="index"><a :href="tag.url" :class="tag.current">{{tag.name}}</a></li>
+                </ul>
+            </div>
+
+            <div class="clearfix info">
+                <el-card class="content">
+                    <template #header>
+                        <div class="content-head">
+                            <p><span>红色体验</span></p>
+                            <div style="display: flex;">
+                                <el-input style="width: 340px" placeholder="搜索红色体验"></el-input>
+                                <el-button type="danger" plain>搜索</el-button>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <div class="content-body">
+                        <a v-for="(spot, index) in scenicSpots" :key="index" class="scenic-spot" href="#">
+                            <img :src="spot.imageUrl" :alt="spot.name">
+                            <div class="scenic-spot-info clearfix">
+                                <h2>{{ spot.name }}</h2>
+                                <p>{{ spot.description }}</p>
+                                
+                            </div>
+                        </a>
+                    </div>
+
+                    <p class="content-foot">
+                        <a href="#">&lt;</a>
+                        第{{currentPage}}页
+                        <a href="#">&gt;</a>
+                    </p>
+                </el-card>
+            </div>
+        </div>
+
+        <!-- 版权声明 -->
+        <footer class="copyright">
+            <p>&copy; 2025 潮汕红色旅游网 版权所有</p>
+        </footer>
+
+        <!-- 回到顶部按钮 -->
+        <el-backtop :right="40" :bottom="100" />
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+        const app = createApp({
+            setup() {
+                const currentPage = ref(1);
+                const tags = ref([
+                      {
+                            name: '首页',
+                            url: './index.html'
+                        },
+                        {
+                            name: '旅游线路',
+                            url: './travel-root.html',
+                        },
+                        {
+                            name: '旅游指南',
+                            url: './travel-guide.html'
+                        },
+                        {
+                            name: '文化背景',
+                            url: './cultural.html'
+                        },
+                        {
+                            name: '近期活动',
+                            url: './recent-active.html' 
+                        },
+                        {
+                            name: '红色影像',
+                            url: './red-video.html'
+                        },
+                        {
+                            name: '红色体验',
+                            url: './red-experience.html',
+                            current: 'current'
+                        }  
+                ]) ;
+
+                const scenicSpots = ref([
+                        {
+                            name: '革命历史题材原创话剧《蒙藏学校》震撼上演',
+                            imageUrl: './assets/img/exper1.jpg',
+                            description: '2月28日晚，包头市艺术剧院（内蒙古话剧院）的革命历史题材原创话剧《蒙藏学校》，在包头大剧院精彩上演，为观众带来了一场震撼心灵的红色文化盛宴。',
+                        },{
+                            name: '到平江听“战火勋章”的故事',
+                            imageUrl: './assets/img/exper2.jpg',
+                            description: '​游客变演员，景区变“战场”。春节期间，位于湖南省岳阳市平江县的长寿山·红军营景区（以下简称红军营）围绕“传承红色基因，弘扬爱国主义精神”主题，推出“战火勋章”活动，设置重走红军路、唱革命歌曲、讲红色故事、“战火勋章”沉浸式国防教育体验情景剧等内容，受到游客好评。',
+                        },{
+                            name: '从“红色体验”到“精神年货” 这个假期很带劲',
+                            imageUrl: './assets/img/exper3.jpg',
+                            description: '刚刚过去的春节假期，红色旅游热点地区人气旺盛。红色旅游景区、红色场馆通过丰富产品内容、打造多样化的活动，满足不同年龄段游客的需求，提升游览体验。记者从多家旅游企业了解到，包括春节假期在内的整个寒假，红色研学旅游、沉浸式红色体验成为热门产品。',
+                        }
+                        
+                ]);
+                return { 
+                    tags,
+                    scenicSpots,
+                    currentPage
+                 };
+            }   
+        });
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
+</body>
+</html>
